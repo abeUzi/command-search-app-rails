@@ -8,10 +8,10 @@ $(function() {
   let keyword = '';
   let commandType = '';
 
-  // ドロップダウンによるcommandType選択によるcommand検索イベント
-  $('.command-type-item').on('click', function(e) {
-    const type = $(this).text();
-    $('#dropdown-text').text(type);
+  // サイドバーのcommandType選択によるcommand検索イベント
+  $('#command_type_category button').on('click', function(e) {
+    $('#command_type_category button').removeClass('active');
+    $(this).addClass('active');
     commandType = $(this).data('commandtype');
     searchCommand(commandType, keyword);
   });

@@ -1,31 +1,25 @@
 %nav.navbar.navbar-dark.bg-primary
   %h1 command Search
  
-
-.container-md
-  -# 検索バー
-  .input-group.mb-3
-    .input-group-prepend
-      %button#dropdown-text.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} 
-        Dropdown
-      .dropdown-menu
-        .dropdown-item.command-type-item{data: {commandType:''}}
-          すべて
-        - @command_types.each do |ct| 
-          .dropdown-item.command-type-item{data: {commandType:ct.id}}
-            = ct.command_type
-    %input#command-search-bar.form-control{"aria-label" => "Text input with dropdown button", :type => "text"}/
-
-  -# コマンドテーブル
-  %table.table.table-hover
-    %thead
-      %tr
-        %th{:scope => "col"} Command
-        %th{:scope => "col"} Description
-    %tbody#commands-list
-      - @commands.each do |c|
-        %tr.table-link{data: {href:"commands/#{c.id}"}}
-          %td
-            = c.command
-          %td 
-            = c.description
+.container-fluid.w
+  .row
+    .container-md
+      -# 検索バー
+      .input-group.mb-3
+        %input#command-search-bar.form-control{"aria-label" => "Text input with dropdown button", :type => "text"}/
+  .row
+    = render "commands/category-sidebar"
+    .col-lg-8
+      -# コマンドテーブル
+      %table.table.table-hover
+        %thead
+          %tr
+            %th{:scope => "col"} Command
+            %th{:scope => "col"} Description
+        %tbody#commands-list
+          - @commands.each do |c|
+            %tr.table-link{data: {href:"commands/#{c.id}"}}
+              %td
+                = c.command
+              %td 
+                = c.description

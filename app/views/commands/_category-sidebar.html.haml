@@ -1,0 +1,9 @@
+.col-lg-2
+  カテゴリ
+  .list-group#command_type_category
+    %button.list-group-item.list-group-item-action{type: "button",data: {commandType:''}}
+      すべて
+    - CommandType.all.each do |ct|
+      %button.list-group-item.list-group-item-action{type: "button",data: {commandType:ct.id}}
+        = ct.command_type
+        
