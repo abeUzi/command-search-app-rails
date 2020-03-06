@@ -11,7 +11,7 @@ class CommandsController < ApplicationController
       @commands = Command.all
     end
 
-    keywords = params[:keyword].split()
+    keywords = params[:keyword].split(/[[:blank:]]+/)
     if keywords.length != 0 then
         keywords.each_with_index do |w,i|
           if i == 0 then
@@ -23,7 +23,4 @@ class CommandsController < ApplicationController
     end
     render json:@commands
   end
-
-
-  
 end
