@@ -1,3 +1,25 @@
-%h1 command Search
-- @commands.each do |command|
-  = command.command
+%nav.navbar.navbar-dark.bg-primary
+  %h1 command Search
+ 
+.container-fluid.w
+  .row
+    .container-md
+      -# 検索バー
+      .input-group.mb-3
+        %input#command-search-bar.form-control{"aria-label" => "Text input with dropdown button", :type => "text"}/
+  .row
+    = render "commands/category-sidebar"
+    .col-lg-8
+      -# コマンドテーブル
+      %table.table.table-hover
+        %thead
+          %tr
+            %th{:scope => "col"} Command
+            %th{:scope => "col"} Description
+        %tbody#commands-list
+          - @commands.each do |c|
+            %tr.table-link{data: {href:"commands/#{c.id}"}}
+              %td
+                = c.command
+              %td 
+                = c.description
