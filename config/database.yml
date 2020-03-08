@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: command-search-app_production
-  username: command-search-app
+  username: root
   password: <%= ENV['COMMAND-SEARCH-APP_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
