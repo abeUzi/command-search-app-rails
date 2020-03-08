@@ -6,3 +6,15 @@ nav {
   margin-bottom: 2em;
   color: white;
 }
+
+.main-body {
+  margin: 2em 0;
+  &__search-input-bar {
+    margin-bottom: 2em;
+  }
+
+  .comannds-list-group {
+    height: calc(100vh - 300px);
+    overflow-y: scroll;
+  }
+}

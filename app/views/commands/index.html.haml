@@ -2,24 +2,26 @@
   %h1 command Search
  
 .container-fluid.w
-  .row
-    .container-md
-      -# 検索バー
-      .input-group.mb-3
-        %input#command-search-bar.form-control{"aria-label" => "Text input with dropdown button", :type => "text"}/
-  .row
+  .row.main-body
     = render "commands/category-sidebar"
     .col-lg-8
+      .container-md.main-body__search-input-bar
+        -# 検索バー
+        .input-group.mb-3.input-group-lg
+          .input-group-prepend
+            %span#inputGroup-sizing-lg.input-group-text 検索
+          %input#command-search-bar.form-control{"aria-label" => "Text input with dropdown button", :type => "text"}/
       -# コマンドテーブル
-      %table.table.table-hover
-        %thead
-          %tr
-            %th{:scope => "col"} Command
-            %th{:scope => "col"} Description
-        %tbody#commands-list
-          - @commands.each do |c|
-            %tr.table-link{data: {href:"commands/#{c.id}"}}
-              %td
-                = c.command
-              %td 
-                = c.description
+      .comannds-list-group
+        %table.table.table-hover
+          %thead
+            %tr
+              %th{:scope => "col"} Command
+              %th{:scope => "col"} Description
+          %tbody#commands-list
+            - @commands.each do |c|
+              %tr.table-link{data: {href:"commands/#{c.id}"}}
+                %td
+                  = c.command
+                %td 
+                  = c.description
