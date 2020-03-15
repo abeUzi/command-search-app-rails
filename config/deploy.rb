@@ -1,7 +1,7 @@
 lock '3.12.0'
 
-set :application, 'command-search-app'
-set :repo_url,  'git@github.com:abeUzi/command-search-app.git'
+set :application, 'command-search-app-rails'
+set :repo_url,  'git@github.com:abeUzi/command-search-app-rails.git'
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
