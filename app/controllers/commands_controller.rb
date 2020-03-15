@@ -5,6 +5,12 @@ class CommandsController < ApplicationController
   end
 
   def search
+    @commands = command_search
+    render json:@commands
+  end
+
+  private
+  def command_search
     if params[:commandType] != "" then
       @commands = CommandType.find(params[:commandType]).commands
     else
@@ -15,12 +21,12 @@ class CommandsController < ApplicationController
     if keywords.length != 0 then
         keywords.each_with_index do |w,i|
           if i == 0 then
-            @commands = @commands.where('command LIKE ? OR description LIKE ?', "%#{w}%","%#{w}%")        
+            @commands = @commands.keyword_search(w)     
           else
-            @commands = @commands.where('command LIKE ? OR description LIKE ?', "%#{w}%","%#{w}%")
+            @commands = @commands.keyword_search(w)     
           end
         end
     end
-    render json:@commands
+    @commands
   end
 end
