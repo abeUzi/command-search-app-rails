@@ -20,11 +20,7 @@ class CommandsController < ApplicationController
     keywords = params[:keyword].split(/[[:blank:]]+/)
     if keywords.length != 0 then
         keywords.each_with_index do |w,i|
-          if i == 0 then
-            @commands = @commands.keyword_search(w)     
-          else
-            @commands = @commands.keyword_search(w)     
-          end
+          @commands = @commands.keyword_search(w)     
         end
     end
     @commands
